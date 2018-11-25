@@ -67,6 +67,44 @@ JavaScript still uses prototype-based objects
 
 ---
 
+# Primitives vs Objects
+
+## [Console](https://s3.amazonaws.com/mparsons/jsconsole/index.html)
+
+Note:
+
+```
+typeof "abc"
+typeof new String("abc")
+```
+
+---
+
+<!-- .slide: data-background-image="img/ECMA-logo.png" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.1" -->
+
+# Nov. 1996: ECMAScript
+
+> ... more than 300,000 JavaScript-enabled pages on the Internet today according to www.hotbot.com.
+
+- ECMAScript 1: June 1997
+    - based on Netscape Navigator 4
+- ECMAScript 2: June 1998
+    - alignment with ISO
+
+---
+
+# Dec. 1999: ECMAScript&nbsp;3
+
+- Regular expressions
+- The do-while block
+- Exceptions and the try/catch blocks
+- More built-in functions for strings and arrays
+- Formatting for numeric output
+- The in and instanceof operators
+- Much better error handling
+
+---
+
 # Attackers
 
 - Java - Sun Microsystems
@@ -78,11 +116,19 @@ JavaScript still uses prototype-based objects
 
 ---
 
+# ToDo App
+
+- npm install
+- npm start
+
+---
+
 ## ToDo App Comparison
 
 |           | Angular | React   | Vue     | Lit-Elm | ES6     |
 | --------- | ------- | ------- | ------- | ------- | ------- |
+| Disk      | 376 M   | 186 M   | 168 M   | 299 M   | 560 k   |
 | LoC       | 807     | 218     | 245     | 291     | 236     |
 | LoC JS    | 248     | 93      | 186     | 105/196 | 105/196 |
-| Devel     | 3.61 MB | 1.58 MB | 1.65 MB | 114 kB  | 102 kB  |
-| Optimized | 3.30 MB | 141 kB  | 89 kB   | 46 kB   | 32 kB   |
+| Devel     | 3.61 M  | 1.58 M  | 1.65 M  | 114 k   | 102 k   |
+| Optimized | 3.30 M  | 141 k   | 89 k    | 46 k    | 32 k    |
