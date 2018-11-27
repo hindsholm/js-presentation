@@ -7,6 +7,19 @@ morten@hindsholm.dk
 
 ---
 
+# Agenda
+
+1. History of JavaScript
+2. Building Stuff
+  - Node.js & npm
+  - Module Systems
+  - Transpilers
+3. UI Frameworks and Libraries
+4. Sample Application
+5. Wrap-up
+
+---
+
 <!-- .slide: data-background-image="img/Netscape-logo.png" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.15" -->
 
 
@@ -201,6 +214,10 @@ Note:
 - June 2018: ECMAScript 2017 (ES9)
     - rest/spread properties, asynchronous iteration
 
+Note:
+
+- [A Brief History of JavaScript](https://auth0.com/blog/a-brief-history-of-javascript/)
+
 ---
 
 # JS Attackers
@@ -283,6 +300,10 @@ Compiling some other language to JS
 - TypeScript: JS superset, static typing
 - ... lots of others
 
+Note:
+
+- TS is not about types, it is about tooling
+
 ---
 
 # Transpilers
@@ -290,13 +311,13 @@ Compiling some other language to JS
 Compiling JS to JS
 
 - [Babel](https://babeljs.io/)
-  - Convert ECMAScript 2015+ code into a backwards compatible version of JavaScript
+  - Using tomorrow's JavaScript today
   - Transform syntax
   - Polyfill features that are missing in your target environment
   - Used by React and others
 - Traceur
   - same as Babel but inactive(?)
-  
+
 ---
 
 <!-- .slide: data-background-image="img/Npm-logo.svg" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
@@ -305,15 +326,174 @@ Compiling JS to JS
 
 - Node Package Manager
 - Open source packages in CommonJS format with metadata in JSON file
-- World's largest collection: 700.000 packages
+- World's largest collection: ~700.000 packages
 - [Example](https://www.npmjs.com/package/react)
 
 ---
 
-# ToDo App
+# Building Stuff
 
-- npm install
-- npm start
+- Lint
+- Transpile
+- Uglify
+- Minify
+- Optimize
+- Pack
+- Test
+- ...
+
+---
+
+# Build Tools
+
+- Grunt
+  - ~6,500 plugins
+- Gulp
+  - JS build files, ~3,900 plugins, ...
+- npm
+  - install, build
+- (Webpack)
+
+----
+
+# Grunt Example
+
+```
+// Project configuration.
+grunt.initConfig({
+  pkg: grunt.file.readJSON('package.json'),
+  uglify: {
+    options: {
+      banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+    },
+    build: {
+      src: 'src/<%= pkg.name %>.js',
+      dest: 'build/<%= pkg.name %>.min.js'
+    }
+  }
+});
+// Load the plugin that provides the "uglify" task.
+grunt.loadNpmTasks('grunt-contrib-uglify');
+// Default task(s).
+grunt.registerTask('default', ['uglify']);
+```
+
+----
+
+# Gulp Example
+
+```
+var gulp = require('gulp');
+var concat = require('gulp-concat');
+var sourcemaps = require('gulp-sourcemaps');
+
+gulp.task('js', function() {
+  return gulp.src('client/javascript/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(concat('app.min.js'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('build/js'))
+});
+
+gulp.task('css', function(){
+  // ...
+});
+
+gulp.task('default', [ 'html', 'css', 'js' ]);
+```
+
+---
+
+# UI Frameworks and Libraries
+
+---
+
+# jQuery
+
+<!-- .slide: data-background-image="img/jQuery-logo.jpg" data-background-size="fill" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
+
+- By far the most widely used JS library
+- DOM traversal and manipulation
+- Can lead to badly structured code
+- Has to some extent become unnecessary because of DOM improvements
+
+Note:
+
+- As of June 2018, jQuery is used on 73% of the top 1 million websites, and by 22.4% of all websites (according to BuiltWith).
+
+----
+
+# jQuery Example
+
+```
+$.ajax({
+  url: "/api/getWeather",
+  data: {
+    zipcode: 97201
+  },
+  success: function( result ) {
+    $("#weather-temp").html("<strong>" + result + "</strong> degrees");
+  }
+});
+```
+
+---
+
+# [ToDo App](http://localhost:8080/)
+
+<!-- .slide: data-background-image="img/ToDoApp.png" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
+
+Note:
+
+- [I created the exact same app in React and Vue. Here are the differences.](https://medium.com/javascript-in-plain-english/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd)
+
+---
+
+<!-- .slide: data-background-image="img/Angular-logo.png" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
+
+# Angular
+
+- 1st generation: AngularJS
+- 2nd generation: Angular 2, 4, 5, 6, 7
+  - TypeScript
+  - Component-based
+  - Modularity
+  - Complete application framework
+  - Progressive Web Apps
+  - CLI
+
+---
+
+<!-- .slide: data-background-image="img/React-logo.png" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
+
+# React
+
+- UI Library
+- Component-based
+- Application state synchronized with views
+- Uses proprietary JSX format
+- Applications may need additional libraries
+- CLI
+
+---
+
+<!-- .slide: data-background-image="img/Vue-logo.png" data-background-size="fill" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
+
+# Vue.js
+
+- UI Library
+- Component-based
+- Application state synchronized with views
+- Supports React's JSX format
+- Applications may need additional libraries
+
+Note:
+
+- Vue was created by Evan You after working for Google using AngularJS in a number of projects. He later summed up his thought process: "I figured, what if I could just extract the part that I really liked about Angular and build something really lightweight."[6] Vue was originally released in February 2014. 
+
+---
+
+# Web Components
 
 ---
 
@@ -333,3 +513,10 @@ Compiling JS to JS
 
 - A complete platform for ...
 - [ECMAScript 6 compatibility table](https://kangax.github.io/compat-table/es6/)
+
+---
+
+# Links
+
+- [A Brief History of JavaScript](https://auth0.com/blog/a-brief-history-of-javascript/)
+- [How it feels to learn JavaScript in 2016](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f)
