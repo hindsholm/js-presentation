@@ -216,13 +216,13 @@ Note:
 
 # JavaScript Engines
 
-| Provider  | Engine         | Usage                       |
-| --------- | -------------- | --------------------------- |
-| Opera     | Carakan        | Opera browser (until v. 15) |
-| Microsoft | Chakra         | Edge                        |
-| Mozilla   | SpiderMonkey   | Firefox                     |
-| Google    | V8             | Chrome, Node.js             |
-| Apple     | JavaScriptCore | Safari                      |
+| Provider  | Engine         | Usage                            |
+| --------- | -------------- | -------------------------------- |
+| Opera     | Carakan        | Opera browser (until v. 15)      |
+| Microsoft | Chakra         | Edge                             |
+| Apple     | JavaScriptCore | Safari                           |
+| Mozilla   | SpiderMonkey   | Firefox                          |
+| Google    | V8             | Chrome, Chromium, Opera, Node.js |
 
 ---
 
@@ -256,6 +256,49 @@ moreWork();  // will run before console.log
 
 ---
 
+# Module Systems and Implementations
+
+- Immediately-Invoked Function Expression ([IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE))
+- CommonJS - Webpack
+  - Node.js - Browserify
+- Asynchronous Module Definition (AMD) - require.js, Dojo
+- ES2015 - all major browsers
+- All of the above - System.js 
+
+Note:
+
+- Client side implementations often package everything into one or two files
+- [JavaScript Module Systems Showdown: CommonJS vs AMD vs ES2015](https://auth0.com/blog/javascript-module-systems-showdown/)
+
+---
+
+# Transpilers
+
+Compiling some other language to JS
+
+- Dart: OO language, drives Google Adwords
+- ClojureScript: functional language, dynamic typing
+- Scala.js: OO and functional
+- CoffeeScript: "improved" JS, Ruby-like
+- TypeScript: JS superset, static typing
+- ... lots of others
+
+---
+
+# Transpilers
+
+Compiling JS to JS
+
+- [Babel](https://babeljs.io/)
+  - Convert ECMAScript 2015+ code into a backwards compatible version of JavaScript
+  - Transform syntax
+  - Polyfill features that are missing in your target environment
+  - Used by React and others
+- Traceur
+  - same as Babel but inactive(?)
+  
+---
+
 <!-- .slide: data-background-image="img/Npm-logo.svg" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
 
 # npm
@@ -263,7 +306,7 @@ moreWork();  // will run before console.log
 - Node Package Manager
 - Open source packages in CommonJS format with metadata in JSON file
 - World's largest collection: 700.000 packages
-- [Example](https://www.npmjs.com/package/vue)
+- [Example](https://www.npmjs.com/package/react)
 
 ---
 
@@ -289,3 +332,4 @@ moreWork();  // will run before console.log
 # Status on ES6
 
 - A complete platform for ...
+- [ECMAScript 6 compatibility table](https://kangax.github.io/compat-table/es6/)
