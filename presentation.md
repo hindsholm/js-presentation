@@ -7,22 +7,22 @@ morten@hindsholm.dk
 
 ---
 
+<!-- .slide: data-background-image="img/JavaScript-logo.png" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
+
 # Agenda
 
 1. History of JavaScript
 2. Building Stuff
-  - Node.js & npm
-  - Module Systems
-  - Transpilers
-3. Sample Application
-4. UI Frameworks and Libraries
-5. Wrap-up
+3. UI Frameworks and Libraries
+4. Wrap-up
 
 ---
+
+<!-- .slide: data-background-image="img/javascript.jpg" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.3" -->
 
 # History of JavaScript
 
----
+----
 
 <!-- .slide: data-background-image="img/Netscape-logo.png" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.15" -->
 
@@ -41,19 +41,7 @@ Note:
 - Lots of important decisions had to be made and very little time was available to make them. 
 - "I’m not proud, but I’m happy that I chose Scheme-ish first-class functions and Self-ish (albeit singular) prototypes as the main ingredients. The Java influences, [...] the primitive vs. object distinction (e.g., string vs. String), were unfortunate."
 
----
-
-## Functions as First-Class Objects
-
-```javascript
-var myFunction = function() {
-  console.log('hello');
-}
-otherFunction(myFunction);
-myFunction.property = '1';
-```
-
----
+----
 
 ## Functions as First-Class Objects
 
@@ -64,7 +52,7 @@ a.forEach(function(e) {           a.forEach(e => {
 });                               });
 ```
 
----
+----
 
 ## `class` is Just Syntactical Sugar
 
@@ -82,7 +70,7 @@ user.sayHi();                     user.sayHi();
 ```
 JavaScript still uses prototype-based objects
 
----
+----
 
 # Primitives vs Objects
 
@@ -95,7 +83,7 @@ typeof "abc"
 typeof new String("abc")
 ```
 
----
+----
 
 <!-- .slide: data-background-image="img/ECMA-logo.png" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.1" -->
 
@@ -108,7 +96,7 @@ typeof new String("abc")
 - ECMAScript 2: June 1998
     - alignment with ISO
 
----
+----
 
 # Dec. 1999: ECMAScript&nbsp;3
 
@@ -124,9 +112,9 @@ Note:
 
 This version of ECMAScript spread far and wide. It was supported by all major browsers at the time, and continued to be supported many years later.
 
----
+----
 
-# 2000-2008: "ECMAScript 4" 
+# 2000-8: "ECMAScript 4" 
 
 <div class="container">
 <div class="col">
@@ -164,7 +152,9 @@ Note:
 - All in all, ECMAScript 4 took almost 8 years of development and was finally scrapped. A hard lesson for all who were involved.
 - ActionScript (Flash) remains the closest look to what ECMAScript 4 could have been if it had been implemented by popular JavaScript engines
 
----
+----
+
+<!-- .slide: data-background-image="img/ajax.jpg" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.1" -->
 
 # 2005: AJAX
 
@@ -173,18 +163,18 @@ Note:
     - as an ActiveX control(!)
 - Later incorporated in the standard
 
----
+----
 
 # Dec. 2009: ECMAScript&nbsp;5
 
 - Getter/setters
 - Reserved words as property names
-- New Object and Array methods
+- New Object and Array methods <!-- .element: class="fragment highlight-red" -->
 - New Date methods (toISOString, now, toJSON)
 - Function bind
 - JSON support
 - Immutable global objects (undefined, NaN, Infinity)
-- Strict mode
+- Strict mode <!-- .element: class="fragment highlight-red" -->
 - Other minor changes
 
 Note:
@@ -193,23 +183,25 @@ Note:
 - Array methods improve certain functional patterns (map, reduce, filter, every, some). 
 - JSON: a JavaScript-inspired data format that is now natively supported through JSON.stringify and JSON.parse
 
----
+----
 
 # June 2015:
 # ECMAScript 2015 (ES6)
 
-- Constants
-- Block scope
-- Arrow functions
-- Template literals
-- Destructuring assignment
-- Modules
-- Classes
-- Map & Set collections
-- Promises
-- ...
+- Constants <!-- .element: class="fragment" -->
+- Block scope <!-- .element: class="fragment" -->
+- Arrow functions <!-- .element: class="fragment" -->
+- Template literals <!-- .element: class="fragment" -->
+- Destructuring assignment <!-- .element: class="fragment" -->
+- Modules <!-- .element: class="fragment" -->
+- Classes <!-- .element: class="fragment" -->
+- Map & Set collections <!-- .element: class="fragment" -->
+- Promises <!-- .element: class="fragment" -->
+- ... <!-- .element: class="fragment" -->
 
----
+----
+
+# 2016 -
 
 - June 2016: ECMAScript 2016 (ES7)
     - exponentiation operator (**)
@@ -218,18 +210,18 @@ Note:
 - June 2018: ECMAScript 2017 (ES9)
     - rest/spread properties, asynchronous iteration
 
----
+----
 
 # JavaScript Assassination Attempts
 
-- Java - Sun Microsystems
-- VBScript - Microsoft
-- ActionScript/Flash - Adobe
-- Silverlight - Microsoft
-- Dart - Google
-- TypeScript - Microsoft
+- Java - Sun Microsystems <!-- .element: class="fragment" -->
+- VBScript - Microsoft <!-- .element: class="fragment" -->
+- ActionScript/Flash - Adobe <!-- .element: class="fragment" -->
+- Silverlight - Microsoft <!-- .element: class="fragment" -->
+- Dart - Google <!-- .element: class="fragment" -->
+- TypeScript - Microsoft <!-- .element: class="fragment" -->
 
----
+----
 
 # JavaScript Engines
 
@@ -240,6 +232,12 @@ Note:
 | Apple     | JavaScriptCore | Safari                           |
 | Mozilla   | SpiderMonkey   | Firefox                          |
 | Google    | V8             | Chrome, Chromium, Opera, Node.js |
+
+---
+
+<!-- .slide: data-background-image="img/building-stuff.jpg" data-background-size="fill" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
+
+# Building Stuff
 
 ---
 
@@ -272,6 +270,8 @@ moreWork();  // will run before console.log
 ```
 
 ---
+
+<!-- .slide: data-background-image="img/modules.jpg" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
 
 # Module Systems and Implementations
 
@@ -320,7 +320,7 @@ Compiling JS to JS
 
 ---
 
-<!-- .slide: data-background-image="img/Npm-logo.svg" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
+<!-- .slide: data-background-image="img/Npm-logo.svg" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.1" -->
 
 # npm
 
@@ -331,7 +331,7 @@ Compiling JS to JS
 
 ---
 
-# Building Stuff
+# Lots of Tools
 
 - Lint
 - Transpile
@@ -356,6 +356,8 @@ Compiling JS to JS
 
 ----
 
+<!-- .slide: data-background-image="img/grunt.png" data-background-size="30%" data-background-position="top left" data-background-repeat="no-repeat" data-background-opacity="0.3" -->
+
 # Grunt Example
 
 ```
@@ -379,6 +381,8 @@ grunt.registerTask('default', ['uglify']);
 ```
 
 ----
+
+<!-- .slide: data-background-image="img/gulp.png" data-background-size="20%" data-background-position="top left" data-background-repeat="no-repeat" data-background-opacity="0.3" -->
 
 # Gulp Example
 
@@ -503,7 +507,7 @@ Note:
 - **HTML Templates**  
   HTML placeholder elements with markup that is not rendered.
 
-*All standard HTML and ES6*
+*All standard HTML and ES6* <!-- .element: class="fragment" -->
 
 ----
 
@@ -567,6 +571,11 @@ render(sayHello('Everyone'), document.body);
 - Packages are lazy-loaded and cached
 - Version support
 
+Note:
+
+- HTTP/2 may eliminate the need for minifying and packing
+- Using ES6 modules implies lazy-loading
+
 ---
 
 ## ToDo App Comparison
@@ -581,16 +590,19 @@ render(sayHello('Everyone'), document.body);
 
 ---
 
+<!-- .slide: data-background-image="img/wrapping-up.jpg" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.1" -->
+
 # Wrapping Up
 
-- ECMAScript 2015 is a complete platform for client app development
-- If you really like static types, TypeScript is a nice alternative
-- Think twice about relying on a framework (and its dependencies)
+- ECMAScript 2015 is a complete platform for client app development <!-- .element: class="fragment" -->
+- If you really like static types, TypeScript is a nice alternative <!-- .element: class="fragment" -->
+- Think twice about relying on a framework (and its dependencies) <!-- .element: class="fragment" -->
 
 ---
 
 # Links
 
 - [A Brief History of JavaScript](https://auth0.com/blog/a-brief-history-of-javascript/)
-- [How it feels to learn JavaScript in 2016](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f)
+- [How it feels to learn JavaScript in 2016](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f) :)
 - [ECMAScript 6 compatibility table](https://kangax.github.io/compat-table/es6/)
+- [A night experimenting with Lit-HTML…](https://medium.com/@lucamezzalira/a-night-experimenting-with-lit-html-585a8c69892a)
