@@ -14,9 +14,13 @@ morten@hindsholm.dk
   - Node.js & npm
   - Module Systems
   - Transpilers
-3. UI Frameworks and Libraries
-4. Sample Application
+3. Sample Application
+4. UI Frameworks and Libraries
 5. Wrap-up
+
+---
+
+# History of JavaScript
 
 ---
 
@@ -214,13 +218,9 @@ Note:
 - June 2018: ECMAScript 2017 (ES9)
     - rest/spread properties, asynchronous iteration
 
-Note:
-
-- [A Brief History of JavaScript](https://auth0.com/blog/a-brief-history-of-javascript/)
-
 ---
 
-# JS Attackers
+# JavaScript Assassination Attempts
 
 - Java - Sun Microsystems
 - VBScript - Microsoft
