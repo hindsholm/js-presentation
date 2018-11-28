@@ -486,6 +486,7 @@ Note:
 - Application state synchronized with views
 - Supports React's JSX format
 - Applications may need additional libraries
+- CLI
 
 Note:
 
@@ -494,6 +495,77 @@ Note:
 ---
 
 # Web Components
+
+- **Custom Elements**  
+  JS APIs that allow you to create custom elements.
+- **Shadow DOM**  
+  JS APIs for attaching a "shadow" DOM tree to an element.
+- **HTML Templates**  
+  HTML placeholder elements with markup that is not rendered.
+
+*All standard HTML and ES6*
+
+----
+
+# lit-html
+
+Next-generation HTML Templates in JavaScript
+
+```
+import {html, render} from 'lit-html';
+
+// A lit-html template uses the `html` template tag:
+let sayHello = (name) => html`<h1>Hello ${name}</h1>`;
+
+// It's rendered with the `render()` function:
+render(sayHello('World'), document.body);
+
+// And render only updates the data that changed, without VDOM diffing!
+render(sayHello('Everyone'), document.body);
+```
+
+----
+
+# lit-element
+
+```
+<script type="module">
+  import {LitElement, html} from '@polymer/lit-element';
+
+  class MyElement extends LitElement {
+
+    static get properties() {
+      return { mood: {type: String} };
+    }
+
+    constructor() {
+      super();
+      this.mood = '';
+    }
+
+    render() {
+      return html`<style> .mood { color: green; } </style>
+        Web Components are <span class="mood">${this.mood}</span>!`;
+    }
+
+  }
+
+  customElements.define('my-element', MyElement);
+</script>
+<my-element mood="happy"></my-element>
+```
+
+---
+
+<!-- .slide: data-background-image="img/jspm-logo.png" data-background-size="contain" data-background-repeat="no-repeat" data-background-opacity="0.2" -->
+
+# jspm
+
+- Load npm packages with the native browser ES module loader
+- Modules are all served as separate files over HTTP/2 with CDN edge caching.
+- Far-future expires are provided for exact package versions for fast reloads.
+- Packages are lazy-loaded and cached
+- Version support
 
 ---
 
@@ -509,10 +581,11 @@ Note:
 
 ---
 
-# Status on ES6
+# Wrapping Up
 
-- A complete platform for ...
-- [ECMAScript 6 compatibility table](https://kangax.github.io/compat-table/es6/)
+- ECMAScript 2015 is a complete platform for client app development
+- If you really like static types, TypeScript is a nice alternative
+- Think twice about relying on a framework (and its dependencies)
 
 ---
 
@@ -520,3 +593,4 @@ Note:
 
 - [A Brief History of JavaScript](https://auth0.com/blog/a-brief-history-of-javascript/)
 - [How it feels to learn JavaScript in 2016](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f)
+- [ECMAScript 6 compatibility table](https://kangax.github.io/compat-table/es6/)
