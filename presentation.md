@@ -167,20 +167,20 @@ Note:
 
 # Dec. 2009: ECMAScript&nbsp;5
 
-- Getter/setters
+- Getters/setters
 - Reserved words as property names
-- New Object and Array methods <!-- .element: class="fragment highlight-red" -->
-- New Date methods (toISOString, now, toJSON)
-- Function bind
+- New `Object` and `Array` methods <!-- .element: class="fragment highlight-red" -->
+- New `Date` methods (`toISOString`, `now`, `toJSON`)
+- Function `bind`
 - JSON support
-- Immutable global objects (undefined, NaN, Infinity)
+- Immutable global objects (`undefined`, `NaN`, `Infinity`)
 - Strict mode <!-- .element: class="fragment highlight-red" -->
 - Other minor changes
 
 Note:
 
-- Strict mode is preventing many common sources for errors. 
 - Array methods improve certain functional patterns (map, reduce, filter, every, some). 
+- Strict mode is preventing many common sources for errors. 
 - JSON: a JavaScript-inspired data format that is now natively supported through JSON.stringify and JSON.parse
 
 ----
@@ -206,7 +206,7 @@ Note:
 - June 2016: ECMAScript 2016 (ES7)
     - exponentiation operator (**)
 - June 2017: ECMAScript 2017 (ES8)
-    - async / await
+    - `async` / `await`
 - June 2018: ECMAScript 2017 (ES9)
     - rest/spread properties, asynchronous iteration
 
@@ -406,6 +406,29 @@ gulp.task('css', function(){
 gulp.task('default', [ 'html', 'css', 'js' ]);
 ```
 
+----
+
+# npm Example
+
+package.json:
+
+```
+{
+  "name": "react-todo",
+  "version": "0.1.0",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom"
+  }
+}
+```
+
 ---
 
 # UI Frameworks and Libraries
@@ -527,6 +550,8 @@ render(sayHello('World'), document.body);
 // And render only updates the data that changed, without VDOM diffing!
 render(sayHello('Everyone'), document.body);
 ```
+
+*Faster than React!* <!-- .element: class="fragment" -->
 
 ----
 
